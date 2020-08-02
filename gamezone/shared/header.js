@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Image, ImageBackground} from 'react-native';
 // import { Icon } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default function Header({navigation}) {
+export default function Header({title, navigation}) {
 
     const openMenu = () => {
         navigation.openDrawer();
     }
 
     return (
-        <View style={styles.header}>
+        <ImageBackground source={require('../assets/game_bg.png')} style={styles.header}>
             <Icon name="dehaze" type="material-icons" size={28} onPress={openMenu} style={styles.icon} />
-            <View>
-                <Text style={styles.headerText}>Game zone</Text>
+            <View style={styles.headerTitle}>
+                <Image source={require('../assets/heart_logo.png')} style={styles.headerImage}></Image>
+                <Text style={styles.headerText}>{title}</Text>
             </View>
-        </View>
+        </ImageBackground>
     );
 }
 
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row', //main axis
       alignItems: 'center', //column direction
       justifyContent: 'center',
-      backgroundColor: 'pink',
+    //   backgroundColor: 'pink',
     },
     headerText: {
         fontWeight: 'bold',
@@ -37,5 +38,14 @@ const styles = StyleSheet.create({
     icon: {
         position: 'absolute',
         left: 16,
-    }
+    },
+    headerTitle: {
+        flexDirection: 'row',
+    },
+    headerImage: {
+        width: 26,
+        height: 26,
+        marginHorizontal: 10,
+    },
+    
 });
